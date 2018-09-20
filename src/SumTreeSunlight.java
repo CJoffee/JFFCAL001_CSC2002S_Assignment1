@@ -74,6 +74,7 @@ public class SumTreeSunlight{
                totExpos += treeExpos[i];
             }
             avgExpos = totExpos/trees;
+	    System.gc();
             time = tock();
             
             System.out.println(avgExpos);

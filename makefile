@@ -31,8 +31,8 @@ classes: $(CLASSES)
 ./bin/%.class: ./src/%.java
 	$(JC) $(CP) $(SPATH) $< $(DEST)
 
-./bin/SumTreeSunlight.class: ./src/SumTreeArray.java
-	$(JC) $(CP) $(SPATH) ./src/SumTreeSunlight.java $(DEST)
+#./bin/SumTreeSunlight.class: ./src/SumTreeArray.java
+#	$(JC) $(CP) $(SPATH) ./src/SumTreeSunlight.java $(DEST)
 
 #generate javadocs
 docs: 
