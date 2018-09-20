@@ -1,5 +1,3 @@
-package JFFCAL001_CSC2002S_Assignment1;
-
 import java.util.concurrent.ForkJoinPool;
 import java.io.*;
 
@@ -33,11 +31,10 @@ public class SumTreeSunlight{
    }
    
    public static void main(String[] args) throws IOException{
-      //String inFile = args[0];
+      String inFile = args[0];
       //String inFile = "sample_input.txt";
-      String inFile = "JFFCAL001_CSC2002S_Assignment1/sample_input.txt";
       //System.out.println(inFile);
-      //String outFile = args[1];
+      String outFile = args[1];
       
       try{
          //Input file reader

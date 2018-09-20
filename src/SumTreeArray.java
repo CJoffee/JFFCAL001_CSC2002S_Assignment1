@@ -1,5 +1,3 @@
-package JFFCAL001_CSC2002S_Assignment1;
-
 import java.util.concurrent.RecursiveTask;
 /**
 *@author Callum Joffee
