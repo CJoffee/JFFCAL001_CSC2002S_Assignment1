@@ -1,4 +1,4 @@
-package JFFCAL001_CSC2002S_Assignment1;
+package src;
 
 import java.util.concurrent.RecursiveTask;
 /**
@@ -10,7 +10,7 @@ public class SumTreeArray extends RecursiveTask<Float> {
    private int rhi;
    private int rlo;
    private float[][] arr;
-   private static final int SEQUENTIAL_CUTOFF=500;
+   private static final int SEQUENTIAL_CUTOFF=5000;
      
    float ans = 0;
      

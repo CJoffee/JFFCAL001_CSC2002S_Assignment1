@@ -9,7 +9,7 @@ import java.io.*;
 *Class used to sum the square 2D array representing the average daily sunlight 
 *received by the foliage of a tree.
 */
-public class SumTreeSunlight{
+public class SumTreeSunlightSeq{
    static long startTime = 0;
 	
    private static void tick(){
@@ -19,6 +19,7 @@ public class SumTreeSunlight{
       return (System.currentTimeMillis() - startTime) / 1000.0f; 
    }
    
+   /**
    static final ForkJoinPool fjPool = new ForkJoinPool();
    static float sum(float[][] arr, int[] param){
       int endVert = param[0]+param[2];
@@ -30,7 +31,7 @@ public class SumTreeSunlight{
          endHori=arr[param[0]].length;
       }
       return fjPool.invoke(new SumTreeArray(arr,param[0],param[1],endVert,endHori));
-   }
+   }*/
    
    public static void main(String[] args) throws IOException{
       //String inFile = args[0];
@@ -73,7 +74,22 @@ public class SumTreeSunlight{
                
             tick(); //timing loop started
             for (int i = 0; i < trees; i++){
-               treeExpos[i] = sum(area, treeParam[i]);
+               treeExpos[i] = 0;
+               int endVert = treeParam[i][0]+treeParam[i][2];
+               int endHori = treeParam[i][1]+treeParam[i][2];
+               if (endVert>area.length){
+                  endVert=area.length;
+               }
+               if (endHori>area[treeParam[i][0]].length){
+                  endHori=area[treeParam[i][0]].length;
+               }
+            
+               for (int j = treeParam[i][0]; j < endVert; j++){
+                  for (int k = treeParam[i][1]; k< endHori; k++){
+                  //treeExpos[i] = sum(area, treeParam[i]);
+                     treeExpos[i] += area[j][k];
+                  }
+               }
                totExpos += treeExpos[i];
             }
             avgExpos = totExpos/trees;
