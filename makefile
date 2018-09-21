@@ -16,7 +16,8 @@ DOCPATH = -d ./doc
 
 #Source files
 SRCFILES = src/SumTreeArray.java \
-	src/SumTreeSunlight.java
+	src/SumTreeSunlight.java \
+	src/SumTreeSunlightSeq.java
 
 #Class files
 CLASSES = $(subst src/, bin/, $(SRCFILES:.java=.class))

@@ -19,8 +19,8 @@ public class SumTreeSunlight{
    
    static final ForkJoinPool fjPool = new ForkJoinPool();
    static float sum(float[][] arr, int[] param){
-      int endVert = param[0]+param[2];
-      int endHori = param[1]+param[2];
+      int endVert = param[2];
+      int endHori = param[3];
       if (endVert>arr.length){
          endVert=arr.length;
       }
@@ -35,6 +35,8 @@ public class SumTreeSunlight{
       //String inFile = "sample_input.txt";
       //System.out.println(inFile);
       String outFile = args[1];
+      PrintStream out = new PrintStream(new FileOutputStream(outFile));
+      System.setOut(out);
       
       try{
          //Input file reader
@@ -55,12 +57,13 @@ public class SumTreeSunlight{
             }
          
             int trees = Integer.parseInt(inF.readLine());
-            int[][] treeParam = new int[trees][3];
+            int[][] treeParam = new int[trees][4];
             for (int i = 0; i < trees; i++){
                field = inF.readLine().trim().split(" ");
                treeParam[i][0] = Integer.parseInt(field[0]);
                treeParam[i][1] = Integer.parseInt(field[1]);
-               treeParam[i][2] = Integer.parseInt(field[2]);
+               treeParam[i][2] = Integer.parseInt(field[2])+treeParam[i][0];
+	       treeParam[i][3] = Integer.parseInt(field[2])+treeParam[i][1];
             }
             //array of exposure per tree
             float[] treeExpos = new float[trees];
@@ -68,23 +71,25 @@ public class SumTreeSunlight{
             double avgExpos;
             float time;
                
+	    System.gc();
+
             tick(); //timing loop started
             for (int i = 0; i < trees; i++){
                treeExpos[i] = sum(area, treeParam[i]);
                totExpos += treeExpos[i];
             }
             avgExpos = totExpos/trees;
-	    System.gc();
+	    
             time = tock();
             
             System.out.println(avgExpos);
             System.out.println(trees);
-            //for (int i = 0; i<trees; i++){
-            //   System.out.println(treeExpos[i]);
-            //}
+            for (int i = 0; i<trees; i++){
+               System.out.println(treeExpos[i]);
+            }
             
-            System.out.println("Trees: "+trees);
-            System.out.println(time+" s");
+            //System.out.println("Trees: "+trees);
+            //System.out.println(time+" s");
             
             line = null;
          }
